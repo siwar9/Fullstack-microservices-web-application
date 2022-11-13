@@ -1,5 +1,3 @@
-# kamstrup-assignment
-
 ## Marketplace Webapp 🛍️
 
 This assignment will have:
