@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% include 'navbar.html' %}
+<div class="container">
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-3 mt-4">
+            <div class="card">
+                <img src="{{url_for('static',filename='images/'+product.file)}}" alt="{{product.name}}"class="card-img-top" height="250">
+                <div class="card-body">
+                    <p class="text-center">{{product.name}}</p>
+                    <p class="text-center">${{product.price}}</p>
+                </div>
+                <div class="card-footer">
+                  <form action="{{url_for('AddCart')}}" method="post">
+                      <input type="hidden" name="product_id" value="{{product.id}}">
+                      <button type="submit" class="float-left btn btn-sm btn-success">purchase</button>
+                      <label for="quantity">Quantity:</label><input type="number" name="quantity" value="1" min="1" max="{{product.stock}}">
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
